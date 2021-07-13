@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Registration{% endblock %}
+
+{% block content %}
+  {% load widget_tweaks %}
+  <div class="jumbotron">
+    <h2>User Registration</h2><br>
+    {% if note %}
+      <h3 class="text text-muted">{{note}}</h3>
+    {% endif %}
+    <form action="" method="POST">
+      {% csrf_token %}
+
+      {% for field in form %}
+        <div class="form-group">
+          {% if field.errors %}
+            {% for error in field.errors %}
+              <ul>
+                <li>{{error}}</li>
+              </ul>
+            {% endfor %}
+          {% endif %}
+          {{ field.label_tag }}
+          {% render_field field class="form-control" %}
+          {% if field.help_text %}
+            <small class="form-text text-muted">{{field.help_text}}</small>
+          {% endif %}
+          
+        </div>
+      {% endfor %}
+      
+      {% comment %} <div class="form-group">    
+          <label for="Enrollment Number">Enrollment Number:</label>
+          <input type="number"  name="Enrollment Number" placeholder="Enrollment Number">
+        </div>  {% endcomment %}
+      <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
+    </form>
+  </div>
+
+<style>
+
+{% comment %} .jumbotron {
+background-color: #7f926f66;
+} {% endcomment %}
+label{
+  text-align:center;
+   font-family:verdana;
+   
+}
+
+</style>
+{% endblock %}

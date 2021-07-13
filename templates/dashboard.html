@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %} 
+  <h2>Welcome, {{request.user.get_full_name }}</h2> <hr> <br> &nbsp; &nbsp;
+  <h2>{{request.user.get_Profile_pic}}</h2>
+  <h3 style="text-align:center; font-family:verdana;"><a href="{% url 'position' %}" style="color:#008B8B;">Click Here To Vote </a></h3><br> &nbsp;
+  <h3 style="text-align:center;font-family:verdana;"><a href="{% url 'result' %}" style="color:#FF0000;">Click Here To See Result</a></h3>
+
+<style>
+body {
+  background-color: #FBEEC1;
+}
+h2 { color:#05386B;
+}
+
+h3 { color:#008B8B;
+}
+
+hr {
+  height:2px; border-width:0; color:gray; background-color:gray; width:35%; margin-left:0}
+@media only screen and (max-width: 600px) {
+  hr{
+    width:auto;
+    }
+
+}
+
+</style>
+{% endblock %}
